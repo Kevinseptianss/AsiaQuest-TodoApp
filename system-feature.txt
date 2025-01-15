@@ -1,0 +1,21 @@
+System Features of the Todo App
+
+1. User Authentication: Users can register, log in, and log out securely.
+
+2. Create Todo Items: Users can add new todo items with a title and description.
+
+3. Edit Todo Items: Users can modify existing todo items.
+
+4. Delete Todo Items: Users can remove todo items they no longer need.
+
+5. Mark as Complete: Users can mark todo items as completed.
+
+6. Filter and Sort: Users can filter todo items by status (completed or pending) and sort them by creation date.
+
+7. Responsive Design: The application is designed to work on various devices, including desktops, tablets, and smartphones.
+
+8. User-Friendly Interface: The app features an intuitive and easy-to-navigate interface.
+
+9. Database Integration: The app uses PostgreSQL for data storage and management.
+
+10. Secure Token-Based Authentication: The app employs access and refresh tokens for secure user sessions.

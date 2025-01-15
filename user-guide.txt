@@ -1,0 +1,72 @@
+User Guide for Running the Todo App
+
+This guide will help you set up and run the Todo App project on your local machine. Follow the steps below to get started.
+
+Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+Node.js (version 14 or higher)
+npm (Node Package Manager, comes with Node.js)
+PostgreSQL (for the database)
+
+
+Step 1: Navigate to the Project Directory
+Change into the project directory:
+cd asiaquest-todoapp-backend
+
+Step 2: Install Dependencies
+Install the backend dependencies by running:
+npm install
+Navigate to the frontend directory:
+cd ../asiaquest-todoapp
+Install the frontend dependencies:
+npm install
+
+Step 3: Set Up Environment Variables
+Create a .env file in the backend directory (asiaquest-todoapp-backend) and add the following variables:
+PORT=3000 HOST=localhost ACCESS_TOKEN_KEY=your_access_token_key REFRESH_TOKEN_KEY=your_refresh_token_key ACCESS_TOKEN_AGE=3600
+Replace your_access_token_key and your_refresh_token_key with secure keys of your choice.
+
+Step 4: Set Up the Database
+Ensure PostgreSQL is running on your machine.
+Create a new database for the Todo App. You can do this using the PostgreSQL command line or a GUI tool like pgAdmin.
+Run the migration script to set up the database tables. In the backend directory, run:
+npm run migrate up
+
+Step 5: Run the Backend Server
+Navigate back to the backend directory if you are not already there:
+cd ../asiaquest-todoapp-backend
+Start the backend server using:
+npm run dev
+The server should now be running on http://localhost:3000.
+
+Step 6: Run Postman Collection and Environment
+Open Postman and import the provided Postman collection (AsiaQuest.postman_collection.json).
+Don't forget import the environment (AsiaQuest.postman_environment.json) as well.
+Run it so it can get the User
+
+Step 7: Run the Frontend Application
+Open a new terminal window and navigate to the frontend directory:
+cd asiaquest-todoapp
+Start the frontend application using:
+npm run dev
+The frontend should now be running on http://localhost:5173 (or another port if specified).
+
+Step 8: Access the Application
+Open your web browser.
+Go to http://localhost:5173 to access the Todo App.
+You can log in using the credentials
+username: kevin
+password: kevin123
+
+Step 9: Using the Application
+Add Todo: Enter a title in the input field and click "Add" to create a new todo item.
+Edit Todo: Click on a todo item to edit its title.
+Delete Todo: Click the "Delete" button next to a todo item to remove it.
+Complete Todo: Check the checkbox next to a todo item to mark it as completed.
+
+Troubleshooting
+If you encounter any issues, check the terminal for error messages.
+Ensure that your PostgreSQL server is running and that the database is correctly set up.
+Verify that all environment variables are correctly configured in the .env file.

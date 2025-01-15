@@ -1,0 +1,56 @@
+API Specification Document for Todo App Backend
+
+Overview The Todo App backend provides a RESTful API for managing todo items and user authentication. 
+The API allows users to create, read, update, and delete todo items.
+
+
+Authentication All endpoints require a valid access token in the Authorization header. 
+The token should be prefixed with "Bearer ".
+
+Endpoints
+
+4.1 User Authentication
+
+POST /users
+Description: Register a new user.
+Request Body: { "username": "string", "password": "string" }
+Response:
+201 Created: User registered successfully.
+400 Bad Request: Validation errors.
+
+POST /authentication
+Description: Log in an existing user.
+Request Body: { "username": "string", "password": "string" }
+Response:
+200 OK: Returns access and refresh tokens.
+401 Unauthorized: Invalid credentials.
+
+GET /todo
+Description: Retrieve all todo items for the authenticated user.
+Response:
+200 OK: Returns an array of todo items.
+
+POST /todo
+Description: Create a new todo item.
+Request Body: { "title": "string", "checked": "boolean", "task_order": "integer" }
+Response:
+201 Created: Todo item created successfully.
+400 Bad Request: Validation errors.
+
+PUT /todo/:id
+Description: Update a specific todo item by ID.
+Request Body: { "title": "string", "checked": "boolean", "task_order": "integer" }
+Response:
+200 OK: Todo item updated successfully.
+404 Not Found: Todo item not found.
+400 Bad Request: Validation errors.
+
+DELETE /todo/:id
+Description: Delete a specific todo item by ID.
+Response:
+204 No Content: Todo item deleted successfully.
+404 Not Found: Todo item not found.
+
+Error Handling The API returns standard HTTP status codes to indicate the success or failure of requests. 
+Error responses include a message describing the error.
+Conclusion This API specification provides a comprehensive overview of the endpoints available in the Todo App backend.

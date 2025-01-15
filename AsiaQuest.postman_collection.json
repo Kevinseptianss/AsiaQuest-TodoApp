@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "5f79adad-6893-498d-a9d8-b6c535f18dd4",
+		"name": "AsiaQuest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 201 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"    pm.expect(responseJson.data).to.be.an('object');",
+							"    pm.expect(responseJson.data.userId).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"kevin\",\n    \"password\": \"kevin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 201 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"    pm.expect(responseJson.data).to.be.an('object');",
+							"    pm.expect(responseJson.data.accessToken).to.be.a('string');",
+							"    pm.expect(responseJson.data.refreshToken).to.be.a('string');",
+							"    ",
+							"    pm.environment.set('accessToken', responseJson.data.accessToken);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"kevin\",\n    \"password\": \"kevin123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authentications",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authentications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 201 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(201);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"    pm.expect(responseJson.data).to.be.an('object');",
+							"    pm.expect(responseJson.data.todoId).to.be.a('number');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"testing\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 200 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"    pm.expect(responseJson.data).to.be.an('object');",
+							"    pm.expect(responseJson.data.todos).to.be.a('array');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/todo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 200 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"ganti title\",\n    \"checked\": true,\n    \"task_order\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/todo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('it should response 200 status code', () => {",
+							"    pm.expect(pm.response).to.have.status(200);",
+							"});",
+							"",
+							"pm.test('response Content-Type header should have application/json value', () => {",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.includes('application/json');",
+							"}); ",
+							"",
+							"pm.test('response body should an object', () => {",
+							"    const responseJson = pm.response.json();",
+							"    pm.expect(responseJson).to.be.an('object');",
+							"});",
+							"",
+							"pm.test('response body have correct property and value', () => {",
+							"    const responseJson = pm.response.json();",
+							"",
+							"    pm.expect(responseJson.status).to.equal('success');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{accessToken}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/todo/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"todo",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

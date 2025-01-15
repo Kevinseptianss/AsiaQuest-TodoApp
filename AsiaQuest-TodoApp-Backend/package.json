@@ -1,0 +1,25 @@
+{
+  "name": "asiaquest-todoapp-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/server.js",
+    "migrate": "node-pg-migrate"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@hapi/hapi": "^21.3.12",
+    "@hapi/jwt": "^3.2.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "joi": "^17.13.3",
+    "nanoid": "^3.1.20",
+    "node-pg-migrate": "^7.8.0",
+    "nodemon": "^3.1.9",
+    "pg": "^8.13.1"
+  }
+}
